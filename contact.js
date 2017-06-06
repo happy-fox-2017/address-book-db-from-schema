@@ -16,8 +16,8 @@ class Contact {
     let query = `INSERT INTO contacts (name,company,telp_number,email) VALUES ('${this.name}','${this.company}','${this.telp_number}','${this.email}');`
     db.run(query, function (err) {
       if (!err) {
-        obj.id = this.lastID
-        console.log(`${JSON.stringify(obj)}  trus id nya ${obj.id}`);
+        Contact.id = this.lastID
+        console.log(`${JSON.stringify(obj)}  trus id nya ${Contact.id}`);
         // console.log(`${Contact}`);
         console.log(`name : ${obj.name} with id : ${this.lastID} has been inserted`);
       }
@@ -28,11 +28,11 @@ class Contact {
   update() {
     let obj = this
     console.log(obj);
-    let query = `UPDATE contacts SET name = '${this.name}', company = '${this.company}', telp_number = '${this.telp_number}', email = '${this.email}' WHERE id = ${this.id};`;
+    let query = `UPDATE contacts SET name = '${this.name}', company = '${this.company}', telp_number = '${this.telp_number}', email = '${this.email}' WHERE id = ${+Contact.id};`;
     // let query = `UPDATE contacts set name='${name}' where id=${obj.id};`
     db.run(query, function (err) {
       if (!err) {
-        console.log(`thisnya : ${this}`);
+        // console.log(`thisnya : ${this}`);
         console.log(`success`);
       } else {console.log(err);}
     })
@@ -41,9 +41,9 @@ class Contact {
   view() {}
 }
 
-let contact = new Contact({name:'fajar',company:'cnn',telp_number:'089-123-123',email:'ssrssrr@gmail.com'})
+let contact = new Contact({name:'fajar',company:'cnn',telp_number:'089-123-123',email:'ssrasdfr@gmail.com'})
 console.log(contact);
 contact.create()
-console.log(contact);
-// contact.name = 'rozak'
-// contact.update()
+// console.log(contact);
+contact.name = 'rozak'
+contact.update()
