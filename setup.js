@@ -4,7 +4,7 @@ const db = new sqlite.Database(file)
 
 function createContacts() {
   let query = `Create Table IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(100) NOT NULL, company VARCHAR(100),` +
-  `telp_number VARCHAR(50),email VARCHAR(100) UNIQUE)`
+  `telp_number VARCHAR(50),email VARCHAR(100) UNIQUE,group_id INTEGER)`
   db.run(query, err => {
     if (!err) {console.log(`table contacts created`);}
     else {console.log(err);}

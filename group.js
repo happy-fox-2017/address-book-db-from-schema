@@ -1,10 +1,16 @@
+'use strict'
+
+const sqlite = require('sqlite3').verbose()
+const file = 'address.db'
+const db = new sqlite.Database(file)
+
 class Group {
   constructor(options) {
     this.id = options.id
     this.name = options.name
   }
 
-  create() {
+  saveCreate() {
     let obj = this
     let query = `INSERT INTO groups (name) VALUES ('${this.name}');`
     db.run(query, function (err) {
@@ -16,7 +22,7 @@ class Group {
     })
   }
 
-  update() {
+  saveUpdate() {
     let group = this
     let lastRow = `SELECT * FROM groups ORDER BY id DESC LIMIT 1`
     db.all(lastRow, (err, rows) => {
@@ -29,13 +35,13 @@ class Group {
       if (!err) {console.log(`success read last row`);}
     })
   }
-  remove(id) {
+  static remove(id) {
     let deleteGroup = `DELETE from groups where id=${+id}`
     db.serialize(function () {
       db.run(query, err => {
         let deleteGroupContact = `update from groups_contacts set group_id=null where group_id=${+id}`
         db.run(query, err => {
-          if (!err) console.log(`deleted id ${id on contact_group table}`);
+          if (!err) console.log(`deleted id ${id} on contact_group table}`);
           else {console.log(err);}
         })
         if (!err) {console.log(`deleted id ${id} on groups table`);}
@@ -43,12 +49,13 @@ class Group {
       })
     })
   }
-  view() {
+  static view() {
     let query = `SELECT * from groups;`
-    db.run(query, rows => {
+    db.all(query, (err,rows) => {
       if (!err) {console.log(rows);}
       else {console.log(err);}
     })
   }
 }
-}
+
+export default Group;
