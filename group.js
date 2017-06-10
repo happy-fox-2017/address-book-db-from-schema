@@ -38,12 +38,7 @@ class Group {
   static remove(id) {
     let deleteGroup = `DELETE from groups where id=${+id}`
     db.serialize(function () {
-      db.run(query, err => {
-        let deleteGroupContact = `update from groups_contacts set group_id=null where group_id=${+id}`
-        db.run(query, err => {
-          if (!err) console.log(`deleted id ${id} on contact_group table}`);
-          else {console.log(err);}
-        })
+      db.run(deleteGroup, err => {
         if (!err) {console.log(`deleted id ${id} on groups table`);}
         else {console.log(err);}
       })
