@@ -4,7 +4,13 @@ import {contact_group} from "./contact-group.js";
 const repl = require('repl');
 
 function help(){
-  console.log("---Helper----");
+  console.log("-----Helper----");
+  console.log("\n ----Contact----");
+  console.log("showDataContact()\nsaveDataContact(Object)\nupdateDataContact(Object,id)\ndeleteDataContact(id)");
+  console.log("\n ----Group----");
+  console.log("showDataGroup()\nsaveDataGroup(Object)\nupdateDataGroup(Object,id)\ndeleteDataGroup(id)");
+  console.log("\n ----contact_group----");
+  console.log("showDataContactGroup()\nsaveDataContactGroup(Object)\nupdateDataContactGroup(Object,id)\ndeleteDataContactGroup(id)");
 }
 
 let replServer = repl.start('>> ');
