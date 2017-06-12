@@ -1,0 +1,27 @@
+[
+  {
+    name : "azwa",
+    company : "microsoft",
+    telp_number : "089-877-666",
+    group_id : 1,
+    email : "azwa@gmail.com"
+  },{
+    name : "rasya",
+    company : "apple",
+    telp_number : "087-877-000",
+    group_id : 2,
+    email : "rasya@gmail.com"
+  },{
+    name : "razor",
+    company : "samsung",
+    telp_number : "089-877-666",
+    group_id : 1,
+    email : "rasya@facebook.com"
+  },{
+    name : "fajar",
+    company : "apple",
+    telp_number : "087-777-444",
+    group_id : 1,
+    email : "sony@facebook.com"
+  },
+]

@@ -92,6 +92,16 @@ class Contact {
       else {console.log(err);}
     })
   }
+  static seed() {
+    var jsonfile = require('jsonfile')
+    var file = './contact.json'
+    let contacts = jsonfile.readFileSync(file)
+    contacts.forEach(contact => {
+      let contact = new Contact({name:`${contact.name}`,company:`${contact.company}`,telp_number:`${contact.telp_number}`,email:`${contact.email}`})
+      contact.saveCreate()
+    })
+
+  }
 }
 
 
